@@ -292,6 +292,8 @@ function WebGLProgram( renderer, code, material, shader, parameters ) {
 
 		prefixVertex = [
 
+			material.prefixVertex ? material.prefixVertex( renderer, material, parameters ) : '',
+
 			customDefines,
 
 			'\n'
@@ -299,6 +301,8 @@ function WebGLProgram( renderer, code, material, shader, parameters ) {
 		].filter( filterEmptyLine ).join( '\n' );
 
 		prefixFragment = [
+
+			material.prefixFragment ? material.prefixFragment( renderer, material, parameters ) : '',
 
 			customExtensions,
 			customDefines,
